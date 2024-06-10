@@ -4,6 +4,8 @@ import { Col, Row, Card, Input, Typography } from 'antd';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
 import Loader from './Loader';
 
+import Masonry from 'react-masonry-component';
+
 
 const News = () => {
     const {Title, Text} = Typography;
@@ -12,7 +14,10 @@ const News = () => {
     const [ searchArticle, setArticle ] = useState('');
     const { data, isFetching } = useGetCryptoNewsQuery('all');
     
-    
+    const masonryOptions = {
+        transitionDuration: 0
+    }
+
     useEffect(() => {
         const filteredArticles = data?.articles?.filter((article) => {return article.title.toLowerCase().includes(searchArticle)})
     
@@ -29,7 +34,7 @@ const News = () => {
                 <Input placeholder="search" onChange={(e) => setArticle(e.target.value.toLowerCase())}/>
             </div>
         }    
-            <Row gutter={[24, 24]}>
+            <Masonry elementType='div' options={masonryOptions} className='masonry-grid'>
             {
               newsArr?.map((news, index) => (
                 <Col xs={24} sm={12} lg={8}>
@@ -45,7 +50,7 @@ const News = () => {
                 </Col>
               ))
             }
-            </Row>
+            </Masonry>
         </>
     )
         
