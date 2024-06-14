@@ -31,13 +31,13 @@ const News = () => {
         <Title>News</Title>
         {
             <div className="search-crypto">
-                <Input placeholder="search" onChange={(e) => setArticle(e.target.value.toLowerCase())}/>
+                <Input id="search" placeholder="search" onChange={(e) => setArticle(e.target.value.toLowerCase())}/>
             </div>
         }    
             <Masonry elementType='div' options={masonryOptions} className='masonry-grid'>
             {
               newsArr?.map((news, index) => (
-                <Col xs={24} sm={12} lg={8}>
+                <Col key={index} xs={24} sm={12} lg={8}>
                     <Card className='news-card'>
                     <Link to={`/newsDetail/${index}`}>
                         <Title level={5}>{news?.title}</Title>

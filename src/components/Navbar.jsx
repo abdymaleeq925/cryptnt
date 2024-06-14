@@ -26,6 +26,27 @@ const Navbar = () => {
     if (screenSize < 800) { setActiveMenu(false) } else { setActiveMenu(true) }
   }, [screenSize])
 
+  const items = [
+    {
+      label: <NavLink to='/'>Home</NavLink>,
+      icon: <HomeOutlined />,
+      key: '/',
+      className: isActiveLocation('/') ? 'active-menu-item' : ''
+    },
+    {
+      label: <NavLink to='/cryptocurrencies'>Cryptocurrencies</NavLink>,
+      icon: <MoneyCollectOutlined />,
+      key: 'cryptocurrencies',
+      className: isActiveLocation('/cryptocurrencies') ? 'active-menu-item' : ''
+    },
+    {
+      label: <NavLink to='/news' >News</NavLink>,
+      icon: <BulbOutlined />,
+      key: 'news',
+      className: isActiveLocation('/news') ? 'active-menu-item' : ''
+    }
+]
+
   return (
     <div className="navbar-container">
       <div className="logo-container">
@@ -36,16 +57,7 @@ const Navbar = () => {
       </div>
       {
         activeMenu &&
-        <Menu theme='dark'>
-          <Menu.Item key="/" icon={<HomeOutlined />} className={isActiveLocation('/') ? 'active-menu-item' : ''}>
-            <NavLink to='/'>Home</NavLink>
-          </Menu.Item>
-          <Menu.Item key="cryptocurrencies" icon={<MoneyCollectOutlined />} className={isActiveLocation('/cryptocurrencies') ? 'active-menu-item' : ''}>
-            <NavLink to='/cryptocurrencies'>Cryptocurrencies</NavLink>
-          </Menu.Item>
-          <Menu.Item key="news" icon={<BulbOutlined />} className={isActiveLocation('/news') ? 'active-menu-item' : ''}>
-            <NavLink to='/news' >News</NavLink>
-          </Menu.Item>
+        <Menu theme='dark' items={items}>
         </Menu>
       }
       <Button className='menu-control-container' onClick={() => setActiveMenu(!activeMenu)}>

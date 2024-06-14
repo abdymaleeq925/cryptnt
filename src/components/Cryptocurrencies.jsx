@@ -25,7 +25,7 @@ const Cryptocurrencies = ({ simplified }) => {
       {
         !simplified && (
           <div className="search-crypto">
-            <Input placeholder="search" onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}/>
+            <Input id='crypto-search' placeholder="search" onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}/>
           </div>
         )
       }
