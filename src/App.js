@@ -1,7 +1,7 @@
 import React from "react";
-import { Routes, Route, Link} from 'react-router-dom';
-import { Layout, Typography, Space } from 'antd';
-import { Navbar, CryptoDetail, Cryptocurrencies, News, Exchanges, Homepage, NewsDetail } from './components';
+import { Routes, Route} from 'react-router-dom';
+import { Layout, Typography } from 'antd';
+import { Navbar, CryptoDetail, Cryptocurrencies, News, Homepage, NewsDetail } from './components';
 
 import './App.css';
 
@@ -25,14 +25,9 @@ function App() {
         </Layout>
         <div className="footer">
           <Typography.Title level={5} style={{color: '#fff', textAlign: 'center'}}>
-            MalikCrypto Source <br/>
+            Cryptonite - Crypto Source <br/>
             All rights reserved
           </Typography.Title>
-          <Space style={{color: '#fff', textAlign: 'center'}}>
-            <Link to='/'>Home</Link>
-            <Link to='/cryptocurrencies'>Cryptocurrencies</Link>
-            <Link to='/news'>News</Link>
-          </Space>
         </div>
       </div>    
     </div>

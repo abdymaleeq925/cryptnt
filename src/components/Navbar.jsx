@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Button, Menu, Typography, Avatar } from 'antd';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
+import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, MenuOutlined } from '@ant-design/icons';
 
 import logo from '../img/cryptocurrency.png';
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState();
+
+  const menuRef = useRef(null);
 
   const location = useLocation();
 
@@ -23,7 +25,7 @@ const Navbar = () => {
   }, [])
 
   useEffect(() => {
-    if (screenSize < 800) { setActiveMenu(false) } else { setActiveMenu(true) }
+    if (screenSize < 768) { setActiveMenu(false) } else { setActiveMenu(true) }
   }, [screenSize])
 
   const items = [
@@ -45,7 +47,23 @@ const Navbar = () => {
       key: 'news',
       className: isActiveLocation('/news') ? 'active-menu-item' : ''
     }
-]
+];
+
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    // Check clicks outside all dropdowns
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setActiveMenu(false);
+    }
+  };
+
+  // Add event listener for clicks outside
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
   return (
     <div className="navbar-container">
@@ -55,14 +73,16 @@ const Navbar = () => {
           <Link to='/'>Cryptnt</Link>
         </Typography.Title>
       </div>
+      <div className="burger-menu-container" ref={menuRef}>
       {
         activeMenu &&
         <Menu theme='dark' items={items}>
         </Menu>
       }
-      <Button className='menu-control-container' onClick={() => setActiveMenu(!activeMenu)}>
+      <Button aria-expanded={activeMenu} className='menu-control-container' onClick={() => setActiveMenu(!activeMenu)}>
         <MenuOutlined />
       </Button>
+      </div>
     </div>
   )
 }

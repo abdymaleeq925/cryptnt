@@ -33,7 +33,6 @@ p {
 
 h1 {
     margin: 0 !important;
-    margin-bottom: 10px !important;
 }
 
 .navbar {
@@ -77,6 +76,10 @@ h1 {
     color: white;
 }
 
+.ant-row {
+    margin-top: 20px;
+}
+
 .menu-control-container {
     display: none !important;
     position: absolute !important;
@@ -87,54 +90,16 @@ h1 {
     border: none !important;
 }
 
+.burger-menu-container ul{
+    border-radius: 0 0 0 10px;
+    z-index: 100;
+}
+
 .loader {
     height: 81vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-@media screen and (max-width:800px) {
-    .app {
-        flex-direction: column;
-        overflow: hidden;
-    }
-
-    .navbar {
-        flex: 1;
-    }
-
-    .main {
-        flex: 1;
-        margin-top: 90px;
-        margin-left: 0px;
-        margin-right: 10px;
-    }
-
-    .nav-container {
-        height: 8vh;
-        position: fixed;
-        width: 100%;
-        z-index: 100;
-        background-color: var(--bgSecondary);
-    }
-
-    .menu-control-container {
-        display: block !important;
-    }
-
-    .ant-menu {
-        position: absolute;
-        right: 0px;
-    }
-
-    .home-title {
-        font-size: 1.4rem !important;
-    }
-
-    .show-more {
-        font-size: 1.3rem !important;
-    }
 }
 
 .coin-detail-container {
@@ -176,10 +141,10 @@ h1 {
     color: var(--pink);
 }
 
-.coin-details-heading {
-    font-weight: 700 !important;
-    margin-top: 20px !important;
-    color: var(--pink) !important;
+.coin-details-heading h3 {
+    font-weight: 700;
+    margin-top: 20px;
+    color: var(--pink);
 }
 
 .coin-stats {
@@ -271,41 +236,19 @@ h1 {
     background-color: #1677ff;
 }
 
-.masonry-grid .news-card {
+.news-card {
     margin-bottom: 20px;
     margin-right: 20px;
     width: calc(100% - 20px);
 }
 
-@media screen and (max-width:1000px) {
-    .stats-container {
-        flex-direction: column;
-    }
-
-    .coin-desc-link {
-        flex-direction: column;
-    }
-
-    .stats-container h2 {
-        margin-top: 0px;
-    }
+.masonry-grid {
+    right: -1%;
 }
 
-@media screen and (max-width: 500px) {
-    .coin-links {
-        padding: 0px;
-    }
-
-    .coin-detail-container {
-        margin: 0;
-    }
-
-    .heading {
-        margin-top: 20px;
-    }
+.article-container {
+    margin-top: 30px;
 }
-
-@media screen and (max-width: 500px) {}
 
 .select- {
     width: 180px;
@@ -373,6 +316,10 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin-top: 40px;
+    h4 {
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+    }
 }
 
 .show-more {
@@ -390,6 +337,8 @@ h1 {
 
 .crypto-card-container {
     min-height: 65vh !important;
+    display: flex;
+    justify-content: center;
 }
 
 .crypto-card {
@@ -412,4 +361,110 @@ h1 {
     flex-direction: column;
     padding: 20px;
     align-items: center;
+}
+
+@media screen and (max-width:1024px) {
+    .routes {
+        padding: 15px;
+    }
+    .stats-container {
+        flex-direction: column;
+    }
+    .coin-detail-container {
+        margin: 15px;
+    }
+    .coin-desc-link {
+        flex-direction: column;
+    }
+
+    .stats-container h2 {
+        margin-top: 0px;
+    }
+    .logo-container a{
+        font-size: 24px;
+    }
+    .coin-details-heading {
+        font-size: 24px;
+    }
+
+
+}
+@media screen and (max-width: 768px) {
+    .app {
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .navbar {
+        flex: 1;
+    }
+
+    .main {
+        flex: 1;
+        margin-right: 10px;
+    }
+    .nav-container {
+        height: 8vh;
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+        background-color: var(--bgSecondary);
+    }
+
+    .menu-control-container {
+        display: block !important;
+        span {
+            display: flex;
+        }
+    }
+
+    .ant-menu {
+        position: absolute;
+        right: 0px;
+    }
+
+    .home-title {
+        font-size: 1.4rem !important;
+    }
+
+    .show-more {
+        font-size: 1.3rem !important;
+    }
+
+    .logo-container {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .coin-links {
+        padding: 0px;
+    }
+    .home-heading-container {
+        h4 {
+            font-size: 16px !important;
+        }
+    }
+    h1 {
+        font-size: 34px !important;
+    }
+    .menu-control-container {
+        top: 19px !important;
+    }
+    .coin-detail-container {
+        margin: 0;
+    }
+
+    .heading {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    h1 {
+        font-size: 24px !important;
+    }
+    .menu-control-container {
+        top: 13px !important;
+    }
 }

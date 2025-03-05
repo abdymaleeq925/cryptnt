@@ -42,7 +42,7 @@ const News = () => {
                     <Link to={`/newsDetail/${index}`}>
                         <Title level={5}>{news?.title}</Title>
                         <p><b>Author:</b> <i>{news?.author}</i></p>
-                        <img className='news-image-container' src={news?.urlToImage}/>
+                        <img className='news-image-container' src={news?.urlToImage} alt={news?.title}/>
                         <p>{news?.description}</p>
                         <Text><b>Published date:</b> <i>{new Date(news?.publishedAt).toLocaleDateString()}</i></Text>
                     </Link>
