@@ -84,7 +84,7 @@ h1 {
     display: none !important;
     position: absolute !important;
     right: 10px !important;
-    top: 25px !important;
+    top: 10px !important;
     font-size: 1.2rem !important;
     background-color: var(--bgSecondary) !important;
     border: none !important;
@@ -129,9 +129,10 @@ h1 {
 }
 
 .stats-container {
+    margin-top: 20px;
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .stats-container h2 {
@@ -167,6 +168,11 @@ h1 {
     font-weight: 800;
 }
 
+.coin-value-statistics {
+    flex: 1;
+    min-width: 220px;
+}
+
 .coin-value-statistics-heading p {
     font-size: 1rem;
     opacity: 0.9;
@@ -196,10 +202,6 @@ h1 {
 
 .coin-desc {
     flex: 0.5;
-}
-
-.coin-links {
-    width: 50%;
 }
 
 .coin-link {
@@ -378,9 +380,9 @@ h1 {
     .routes {
         padding: 15px;
     }
-    .stats-container {
-        flex-direction: column;
-    }
+    .coin-value-statistics {
+        min-width: 170px;
+      }
     .coin-detail-container {
         margin: 15px;
     }
@@ -391,7 +393,7 @@ h1 {
     .stats-container h2 {
         margin-top: 0px;
     }
-    .logo-container a{
+    .logo-container h1{
         font-size: 24px;
     }
     .coin-details-heading {
@@ -404,6 +406,10 @@ h1 {
     .app {
         flex-direction: column;
         overflow: hidden;
+    }
+
+    .stats-container {
+        flex-direction: column;
     }
 
     .navbar {
@@ -460,7 +466,7 @@ h1 {
         font-size: 34px !important;
     }
     .menu-control-container {
-        top: 19px !important;
+        top: 14px !important;
     }
     .coin-detail-container {
         margin: 0;
@@ -479,6 +485,6 @@ h1 {
         right: -2%;
     }
     .menu-control-container {
-        top: 13px !important;
+        top: 10px !important;
     }
 }

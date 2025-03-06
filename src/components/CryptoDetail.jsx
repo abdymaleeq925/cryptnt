@@ -170,7 +170,8 @@ const CryptoDetail = () => {
                 <Text>{info}</Text>
               )}
             </Col>
-            {stats &&
+            {
+              stats &&
               stats.map(({ icon, title, value }) => (
                 <Col className="coin-stats" key={title}>
                   <Col className="coin-stats-name">
@@ -179,7 +180,8 @@ const CryptoDetail = () => {
                   </Col>
                   <Text className="stats">{value}</Text>
                 </Col>
-              ))}
+              ))
+            }
           </Col>
         ))}
       </Col>
