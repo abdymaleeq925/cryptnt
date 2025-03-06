@@ -10,20 +10,46 @@ const News = () => {
   const { Title, Text } = Typography;
 
   const [newsArr, setNewsArr] = useState([]);
+  const [data, setData] = useState([]);
   const [searchArticle, setArticle] = useState("");
-  const { data, isFetching } = useGetCryptoNewsQuery("all");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchNews = async () => {
+        try {
+            setLoading(true);
+            const res = await fetch(`/api/news?query=all`);
+            const data = await res.json();
+            
+            if (data.articles) {
+                setData(data.articles);
+                setNewsArr(data.articles);
+            } else {
+                setError("Не удалось загрузить новости");
+            }
+        } catch (err) {
+            setError("Ошибка при получении данных");
+        } finally {
+            setLoading(false);
+        }
+    };
 
   useEffect(() => {
-    const filteredArticles = data?.articles?.filter((article) => {
-      return article.title.toLowerCase().includes(searchArticle);
-    });
+    fetchNews();
+  }, []);
 
-    setNewsArr(
-      filteredArticles?.length > 0 ? filteredArticles : data?.articles
-    );
-  }, [data, searchArticle]);
+  useEffect(() => {
+    if (data.length > 0) {
+      const filteredArticles = data.filter((article) => {
+        return article.title.toLowerCase().includes(searchArticle);
+      });
 
-  if (isFetching) return <Loader />;
+      setNewsArr(filteredArticles.length > 0 ? filteredArticles : data);
+    }
+  }, [searchArticle, data]);
+
+  if (loading) return <Loader />;
+  if (error) return <div>{error}</div>;
 
   return (
     <>
