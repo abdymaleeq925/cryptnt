@@ -1,23 +1,23 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server/server.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "headers": {
-          "Cache-Control": "no-store, no-cache, must-revalidate, private",
-          "Pragma": "no-cache",
-          "Expires": "0"
-        },
-        "dest": "server/server.js"
-      }
-    ],
-    "scripts": {
-        "build": "echo 'Building...'"
+  "version": 2,
+  "builds": [
+    {
+      "src": "cryptnt/package.json",
+      "use": "@vercel/static-build"
+    },
+    {
+      "src": "server/server.js",
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "cryptnt/$1"
+    }
+  ]
+}
