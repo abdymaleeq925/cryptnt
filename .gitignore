@@ -2,6 +2,7 @@
 
 # dependencies
 /cryptnt/node_modules
+/cryptnt/server
 /.pnp
 .pnp.js
 
