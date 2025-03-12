@@ -7,7 +7,7 @@ const app = express();
 
 dotenv.config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5001;
 
 // CORS Settings
 app.use(cors({
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 // Prщxy-endpoint
 app.get('/api/news', async (req, res) => {
     const { q } = req.query;
-
+    res.json({ message: 'Hello from /api/news', query: q });
     try {
         const response = await axios.get('https://newsapi.org/v2/everything', {
             params: {
