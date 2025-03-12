@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     next();
   });
 
-// Porxy-endpoint
+// Prщxy-endpoint
 app.get('/api/news', async (req, res) => {
     const { q } = req.query;
 
